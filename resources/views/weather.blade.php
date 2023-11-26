@@ -36,13 +36,13 @@
                 $imagePath = '';
 
                 if ($temperatureCelsius < 20) { 
-                    $imagePath='cold2.png'; // Image for cold temperature 
+                    $imagePath='cold2.png';
                     $description = 'Cool';
                 } elseif ($temperatureCelsius >= 20 && $temperatureCelsius < 30) { 
-                    $imagePath='warm.png'; // Image for moderate temperature 
+                    $imagePath='warm.png';
                     $description = 'Warm';
                 } else { 
-                    $imagePath='hot2.png'; // Image for hot temperature 
+                    $imagePath='hot2.png';
                     $description = 'Hot';
                 } 
 
