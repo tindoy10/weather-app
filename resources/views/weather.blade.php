@@ -7,91 +7,20 @@
     <title>ClimaCheck</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <style>
-        body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            color: black;
-            background-image: url("{{ asset('images/background2.jpg') }}") !important;
-            background-size: cover !important;
-            height: 100vh;
-            overflow-y: hidden;
-        }
-
-        .weather-container {
-            background: rgba(255, 255, 255, .1);
-            backdrop-filter: blur(30px);
-            border: 2px solid rgba(255, 255, 255, .2);
-            border-radius: 16px;
-        }
-
-        .input-group input {
-            border-radius: 10px;
-            font-size: 18px;
-        }
-
-        .input-group input:focus {
-            border: 2px #3c4d4c solid;
-            box-shadow: none;
-        }
-
-        .input-group .input-icon {
-            position: absolute;
-            left: 2px;
-            font-size: 25px;
-        }
-
-        .weather-image {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            width: 60%;
-            max-width: 100%;
-        }
-
-        .card {
-            background-color: transparent;
-            border: none;
-            color: black;
-        }
-
-        /* Add this to your existing styles */
-        .btn {
-            background-color: #3c4d4c; /* Use a shade of blue */
-            color: white; /* Text color */
-            border: #007BFF;
-            font-size: 18px;
-        }
-
-        /* Add hover effect for better user interaction */
-        .btn:hover {
-            background-color: #2a3635; /* Darker shade of blue on hover */
-            color: white;
-        }
-    </style>
-
-      <script>
-        function updateTime() {
-            const now = new Date();
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
-            const formattedDate = now.toLocaleDateString('en-US', options);
-            document.getElementById('currentDateTime').textContent = formattedDate;
-        }
-
-        // Update the time every second
-        setInterval(updateTime, 1000);
-    </script>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
 </head>
 
 <body>
     <div class="container mt-4 px-5 py-4">
         <div class="row">
             <div class="col-lg-3"></div>
+
             <div class="col-lg-6 weather-container">
             
                 <form method="post" action="{{ route('getWeather') }}">
                     @csrf
-                    <div class="form-group mt-4 mb-3">
-                        <div class="input-group">
+                    <div class="form-group mt-2 mb-3">
+                        <div class="input-group pt-2">
                             <input type="text" name="city" class="form-control" placeholder="Enter location" required>
                             <div class="input-group-append">
                                 <button type="submit" class="btn ml-auto"><i class='bx bx-search'></i></button>
@@ -149,23 +78,26 @@
                 
                 <img src="{{ asset('images/' . $imagePath) }}" alt="Weather Image" class="weather-image">
 
-                <div class="card px-3">
+                <div class="card">
                     <div class="card-body">
-                        <p class="card-text mb-2" style="font-size: 22px;">Temperature: {{ number_format($temperatureCelsius, 2) }} °C ({{ $description }})</p>
-                        <p class="card-text" style="font-size: 22px;">Weather: {{ $simpleWeather }}</p>
+                        <p class="card-text mb-2">Temperature: {{ number_format($temperatureCelsius, 2) }} °C ({{ $description }})</p>
+                        <p class="card-text">Weather: {{ $simpleWeather }}</p>
                     </div>
                 </div>
             </div>
             @endif
         </div>
+
         <div class="col-lg-3"> </div>
-    </div>
+        </div>
     </div>
 
     <!-- Add Bootstrap JS and Popper.js from CDN -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="{{ asset('js/script.js') }}"></script>
 </body>
 
 </html>
