@@ -16,7 +16,6 @@
             <div class="col-lg-3"></div>
 
             <div class="col-lg-6 weather-container">
-            
                 <form method="post" action="{{ route('getWeather') }}">
                     @csrf
                     <div class="form-group mt-2 mb-3">
@@ -87,9 +86,7 @@
             </div>
             @endif
         </div>
-
         <div class="col-lg-3"> </div>
-        </div>
     </div>
 
     <!-- Add Bootstrap JS and Popper.js from CDN -->
