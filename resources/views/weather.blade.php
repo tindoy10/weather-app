@@ -51,7 +51,7 @@
                     'overcast clouds' => 'Overcast Clouds',
                     'scattered clouds' => 'Scattered Clouds',
                     'broken clouds' => 'Broken Clouds',
-                    // Add more mappings as needed
+                    'few clouds' => 'Few Clouds',
                 ];
 
                 // Get the weather description from the API response
